@@ -166,39 +166,11 @@ h6 {
 
 #main img {
   width: 270px;
-  height: 270px;
-  border: 2px double var(--inactiveLabelColor);
- /* border-collapse: collapse;
-  border-spacing: 100px; */
+  height: auto;
+
 }
 
 
-
-#main .container2{   /* Container para imagem de profile na main section */
-  
-  /* Container needed to position the overlay. Adjust the width as needed */
-    display: inherit;
-    position: relative;
-    width: 270px;
-    height: 270px;
-  }
-  
-  /* The overlay effect - lays on top of the container and over the image */
-  .overlay {
-    position: absolute;
-    bottom: 0;
-    background: rgb(0, 0, 0);
-    background: rgba(0, 0, 0, 0.5); /* Black see-through */
-    color: #f1f1f1;
-    width: 100%;
-    transition: .5s ease;
-    opacity:0;
-    color: white;
-    font-size: 20px;
-    padding: 20px;
-    text-align: center;
-  }
-  
   /* Make the image to responsive */
   .image {
     display: block;
@@ -206,14 +178,9 @@ h6 {
     height: auto;
   }
   
-  /* When you mouse over the container, fade in the overlay title */
-  .container2:hover .overlay {
-    opacity: 1;
-  }
-  
 
 
-@media (max-width: 1199px) {
+@media (max-width: 1199px) {     /*1199px*/
   #header {
     left: -300px;
   }
@@ -312,22 +279,38 @@ h6 {
 #hero {
   width: 100%;
   height: 25vh;   /* Estava em 100vh, antes.*/
-  background: url("../img/hero-bg.jpg") bottom center;   /* Estava top center. Se colocar outro, fica a mancha cinza... Precisa arruamr isso. */
-  background-size: 900px;                               /* Estava em "cover", depois "auto". Estranho... Se botar 1000px, ele buga.*/
-  background-position: absolute;
+  background: url("../img/hero-bg.jpg") top center;   /* Estava top center. Se colocar outro, fica a mancha cinza... Precisa arruamr isso. */
+  background-size: 100%;                               /* Estava em "cover", depois "auto". Estranho... Se botar 1000px, ele buga. Deixei em 900px*/
+  background-position: top;                        /*Absolute*/
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  
+  max-width: 100%;
+  min-width: 100%;
+  object-fit: cover;
+  /*
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  */
+  
  /* background-repeat: no-repeat; */
  
- /* ARRUMAR PARA A IMAGEM SE MANTER A MESMA QUANDO A TELA DIMINUI OU AUMENTA A RESOLUÇÃO. */
+ /* ARRUMAR PARA A IMAGEM SE MANTER A MESMA QUANDO A TELA DIMINUI OU AUMENTA A RESOLUÇÃO.
+ Do jeito que está, a imagem fica diferente com qualquer mudança na posição da tela. */
 }
 
 #hero:before {
   content: "";
-  background: rgba(5, 13, 24, 0.3);
-  position: relative;   /* Era absolute antes, e ficava com uma "mancha" se reduzisse a imagem. */
+  background-color: red; /* bottom, top, left e right foram removidos... Se algo ficar vermelho, é porque eu errei algo ali. */
+  position: absolute;   /* Era absolute antes, e ficava com uma "mancha" se reduzisse a imagem. */
+  /*
   bottom: 0;
   top: 0;
   left: 0;
   right: 0;
+  */
   z-index: 1;
 }
 
@@ -420,6 +403,8 @@ section {
   margin-bottom: 0;
 }
 
+
+
 /*--------------------------------------------------------------
 # About
 --------------------------------------------------------------*/
@@ -433,6 +418,79 @@ section {
   margin-bottom: -5px;
 
 }
+
+#bottomtext {
+  font-size: 14px;
+  line-height: normal;
+  margin-bottom: 10px;
+}
+
+
+
+.profilepic{   /* Container para imagem de profile na main section */
+  
+  /* Container needed to position the overlay. Adjust the width as needed */
+  object-fit: cover;
+  display: block;
+  position: relative;
+  width: auto;
+  height: fit-content;
+  max-width: 270px;
+  max-height: 270px;
+  right: 5px; /* Isso é distância da direção descrita... Un... Interessante.*/
+  border: 2px solid var(--inactiveLabelColor);
+  /*a border está um pouco estranha, fazendo o overlay text displace por poucos pixels. */
+  
+ /* border-collapse: collapse;
+  border-spacing: 100px; */
+}
+
+/* The overlay effect - lays on top of the container and over the image */
+.overlay {
+  object-fit: cover;
+  display: inherit;
+  position: absolute;
+  height: 50px;
+  width: 100%;
+  max-width: 100%;
+  bottom: 0;
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.5); /* Black see-through */
+  color: #f1f1f1;
+  transition: .5s ease;
+  opacity:0;
+  color: white;
+  font-size: 20px;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  text-align: center;
+  justify-content: center;
+  /* Overlay text displace em alguns casos leves...*/
+}
+
+/* When you mouse over the container, fade in the overlay title */
+.profilepic:hover .overlay {
+  opacity: 1;
+}
+
+/*Parece que é por aqui que eu vou ter que definir o que vai impedir que na variação do size da window
+stuff fique overlaying errado on the screen.*/
+
+/* Talvez... Refazendo em grid ao invés de usar rows simples, funcione. */
+
+@media(max-width:1199px){
+  #overlay {
+    font-size: 1px;
+    
+  }
+    
+}
+
+
+
+
+
+/*=====================================================*/
 
 .about .content ul {
   list-style: none;
@@ -485,12 +543,12 @@ section {
   
 }
 
-
-/**/
-
 .about .content p:last-child {
   margin-bottom: 0;
 }
+
+
+
 
 /*--------------------------------------------------------------
 # Facts
@@ -543,15 +601,19 @@ section {
   color: #1f5297;
 }
 
+
+
+
 /*--------------------------------------------------------------
 # Skills
 --------------------------------------------------------------*/
 
 .skills .progress {
-  height: 60px;
+  height: 50px;
   display: block;
   background: none;
   border-radius: 0;
+  margin-bottom: 5%;
 }
 
 .skills .progress .skill {
@@ -565,7 +627,9 @@ section {
 }
 
 /* Preciso dar um  jeito de fazer o texto ser "jogado par abaixo" caso a linha comece a quebrar,
-senão ele dá o defeito de "esconder" a barra com texto. */
+senão ele dá o defeito de "esconder" a barra com texto. 
+Aliás, aqui, nesta versão, podemos ver que o texto está overlaying a barrinha. No resize, as barrinhas tambem clipping into each other.
+*/
 .skills .progress .skill .val {
   float: inline-end;   /*antes era right */
   font-style: normal;
@@ -581,6 +645,16 @@ senão ele dá o defeito de "esconder" a barra com texto. */
   height: 10px;
   transition: 0.9s;
   background-color: #149ddd;     /* Cor da barrinha cheia... Será que mudo?*/
+}
+
+@media(max-width:1199px){
+  #skills .progress {
+    
+    height: 30px;
+    width: 300px;
+    margin-bottom: 10px;
+  }
+    
 }
 
 /*--------------------------------------------------------------
@@ -871,97 +945,6 @@ senão ele dá o defeito de "esconder" a barra com texto. */
   font-size: 14px;
 }
 
-/*--------------------------------------------------------------
-# Testimonials
---------------------------------------------------------------*/
-.testimonials .testimonials-carousel,
-.testimonials .testimonials-slider {
-  overflow: hidden;
-}
-
-.testimonials .testimonial-item {
-  box-sizing: content-box;
-  text-align: center;
-  min-height: 320px;
-}
-
-.testimonials .testimonial-item .testimonial-img {
-  width: 90px;
-  border-radius: 50%;
-  margin: 0 auto;
-}
-
-.testimonials .testimonial-item h3 {
-  font-size: 18px;
-  font-weight: bold;
-  margin: 10px 0 5px 0;
-  color: #111;
-}
-
-.testimonials .testimonial-item h4 {
-  font-size: 14px;
-  color: #999;
-  margin: 0;
-}
-
-.testimonials .testimonial-item .quote-icon-left,
-.testimonials .testimonial-item .quote-icon-right {
-  color: #c3e8fa;
-  font-size: 26px;
-}
-
-.testimonials .testimonial-item .quote-icon-left {
-  display: inline-block;
-  left: -5px;
-  position: relative;
-}
-
-.testimonials .testimonial-item .quote-icon-right {
-  display: inline-block;
-  right: -5px;
-  position: relative;
-  top: 10px;
-}
-
-.testimonials .testimonial-item p {
-  font-style: italic;
-  margin: 0 15px 15px 15px;
-  padding: 20px;
-  background: white;
-  position: relative;
-  margin-bottom: 35px;
-  border-radius: 6px;
-  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
-}
-
-.testimonials .testimonial-item p::after {
-  content: "";
-  width: 0;
-  height: 0;
-  border-top: 20px solid white;
-  border-right: 20px solid transparent;
-  border-left: 20px solid transparent;
-  position: absolute;
-  bottom: -20px;
-  left: calc(50% - 20px);
-}
-
-.testimonials .swiper-pagination {
-  margin-top: 20px;
-  position: relative;
-}
-
-.testimonials .swiper-pagination .swiper-pagination-bullet {
-  width: 12px;
-  height: 12px;
-  background-color: white;
-  opacity: 1;
-  border: 1px solid #149ddd;
-}
-
-.testimonials .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: #149ddd;
-}
 
 /*--------------------------------------------------------------
 # Contact
@@ -971,9 +954,10 @@ senão ele dá o defeito de "esconder" a barra com texto. */
 }
 
 .contact .info {
-  padding: 30px;
+  padding: 15px;
   background: white;
   width: 100%;
+  height: 500px;
   box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.12);
 }
 
@@ -1043,16 +1027,59 @@ senão ele dá o defeito de "esconder" a barra com texto. */
   color: white;
 }
 
-.contact .php-email-form {
-  width: 100%;
-  padding: 30px;
+/*NOVO FORMULÁRIO*/
+.contact .contctForm {
+  width: 800px;    /*Por algum motivo, ele tem um limite, e "não desce" quando passa desse limite. Apenas para de aumentar.*/
+  max-height: 800px;
+  margin: 5px;
+  margin-left: 5px;
+  /*
   background: white;
   box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.12);
+  */
+  
+
 }
 
-.contact .php-email-form .form-group {
+.contact .contctForm .form-group {
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  
+}
+
+.contact .contctForm .form-group .form-control{
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  max-height: 250px;   /*Na verdade, isso está horrível. Preciso de uma forma lógica de acertar a altura.*/
+  /* AAACTUALLY... Eu vou ter que melhorar isso tambem. Porque aqui, cada um dos campos tem esta max-height.
+  Não é só o de texto. Por exemplo, se eu set a height para qualquer valor ali... */
+}
+
+
+
+.contact .contctForm button[type=submit] {
+  background: var(--inactiveLabelColor);
+  margin-top: 20px;
+  border: 0;
+  padding: 10px 24px;
+  color: white;
+  transition: 0.4s;
+  border-radius: 4px;
+}
+
+.contact .contctForm button[type=submit]:hover {
+  background: var(--highlightColor);
+}
+
+
+
+/*NOVO FORMULÁRIO*/
+
+
+.contact .php-email-form label {
   padding-bottom: 8px;
 }
+
 
 .contact .php-email-form .validate {
   display: none;
@@ -1073,6 +1100,7 @@ senão ele dá o defeito de "esconder" a barra com texto. */
 
 .contact .php-email-form .error-message br+br {
   margin-top: 25px;
+  
 }
 
 .contact .php-email-form .sent-message {
@@ -1104,13 +1132,9 @@ senão ele dá o defeito de "esconder" a barra com texto. */
   animation: animate-loading 1s linear infinite;
 }
 
-.contact .php-email-form .form-group {
-  margin-bottom: 15px;
-}
 
-.contact .php-email-form label {
-  padding-bottom: 8px;
-}
+
+
 
 .contact .php-email-form input,
 .contact .php-email-form textarea {
@@ -1127,18 +1151,7 @@ senão ele dá o defeito de "esconder" a barra com texto. */
   padding: 10px 15px;
 }
 
-.contact .php-email-form button[type=submit] {
-  background: var(--inactiveLabelColor);
-  border: 0;
-  padding: 10px 24px;
-  color: white;
-  transition: 0.4s;
-  border-radius: 4px;
-}
 
-.contact .php-email-form button[type=submit]:hover {
-  background: var(--highlightColor);
-}
 
 @-webkit-keyframes animate-loading {
   0% {
@@ -1300,6 +1313,9 @@ senão ele dá o defeito de "esconder" a barra com texto. */
   width: 100%;
   opacity: 1;
 }
+
+
+
 
 
 /* collpasible 

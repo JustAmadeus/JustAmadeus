@@ -58,9 +58,9 @@
         <div class="social-links mt-3 text-center">
 <!--          <a href="#" class="discord"><i class="bx bxl-discord"></i></a> -->
 <!--          <a href="#" class="whatsapp"><i class="bx bxl-whatsapp"></i></a> -->
-          <a href="#" class="github"><i class="bx bxl-github"></i></a>
-          <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-          <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+          <a href="https://justamadeus.github.io/JustAmadeus/" class="github"><i class="bx bxl-github"></i></a>
+<!--          <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+          <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>  -->
 <!--          <a href="#" class="mail"><i class="bx bx-envelope"></i></a> -->
         </div>
       </div>
@@ -76,7 +76,7 @@
 <!--
           <li><a href="#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Services</span></a></li>
 -->
-          <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+          <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contato</span></a></li>
         </ul>
       </nav><!-- .nav-menu -->
     </div>
@@ -88,7 +88,12 @@
       <h1 >Hello, world!</h1>
     </div>
       <div class="hero-container" data-aos="fade-in">  
-      <p >Eu sou Amadeus: <span class="typed" data-typed-items="Garoto de 'pograma', E-Athlete, Adepto a game designing, Sh☒tposter"></span></p>
+      <p >Eu sou Amadeus: <span class="typed"
+        data-typed-items=
+        "Garoto de 'pograma',
+         E-Athlete,
+         Adepto a game designing,
+         Sh☒tposter"></span></p>
     </div>
 
 
@@ -107,24 +112,33 @@
         </div>
 
         <div class="row">
-          <div class="col-lg-3" data-aos="fade-right">
-            <div class="container2">
+          <div class="col-lg-3" data-aos="fade-right">   <!--Parece que se mudar a column-lenght aqui, resolve...-->
+            <div class="profilepic">
           
               <img src="assets/img/profile-img.jpg" class="img-fluid" alt="profile pic (caricatura em anime)">
               <div class="overlay">Overlay text deu certo</div>
                       
             </div>  
           </div>
-            
+          
+          
           <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
             <h3>Amadeus Vicari</h3>
-            <p class="fst-italic">
+            <h2 id="bottomtext" class="fst-italic">
               Chaotic/Neutral Human, 4th grade IT professional<br>
-            </p>
+            </h2>
             
             <div class="row">
               <div class="col-lg-6">
                 <ol>
+                  <li><i class="bi bi-chevron-right"></i> 
+                    <strong>Item placeholder#1:</strong> 
+                    <span>Aqui podiam vir minhas especialidades.</span></li>
+                    
+                    <li><i class="bi bi-chevron-right"></i> 
+                      <strong>Item placeholder#2:</strong> 
+                      <span>Aqui podiam vir meus diferenciais.</span></li>
+
 <!--
                   <!--phone
                   <li><i class="bx bxl-whatsapp"></i>                                          </a>
@@ -146,7 +160,7 @@
                 <ul>
                   <li><i class="bi bi-chevron-right"></i> 
                   <strong>Status:</strong> 
-                  <span>Desemp-- procurando emprego. Faz uns freelances e "uns córre" tambem.</span></li>
+                  <span>Desemp-- procurando emprego.</span></li>
                   <!--languages-->
                   <!-- Colocar aqui depois o collapsible para dar um "desenrolar" nos idiomas. Desse jeito não está bom.-->
                   <li><i class="bi bi-chevron-right"></i>
@@ -189,7 +203,7 @@
             não eram tão aclamados por um público tão amplo.
           </p>
         </div>
-
+        
       </div>
     </section><!-- End About Section -->
 
@@ -434,14 +448,15 @@
         <div class="section-title">
           <h2>Contato</h2>
           <p>
-            Além das redes sociais (que estão inativas ali em cima, mas resolvi  adicionar os ícones para ao menos usa-los)
-            você pode entrar em contato através de um destes métodos, ou só deixar uma mensagem no formulário ao lado.
+            Você pode entrar em contato através de um destes métodos, ou só deixar uma mensagem no formulário ao lado. 
+            (Eu preferi não deixar os ícones de social media na barra ao lado, já que apenas GitHub é o que tenho funcionando,
+            atualizado, ou atualizando, no momento).
           </p>
         </div>
 
         <div class="row" data-aos="fade-in">
 
-          <div class="col-lg-5 d-flex align-items-stretch">
+          <div class="col-lg-4 d-flex align-items-stretch">
             <div class="info">
 <!--
               <div class="address">
@@ -450,6 +465,7 @@
                 <p>A108 Adam Street, New York, NY 535022</p>
               </div>
 -->
+
               <div class="email">
                 <i class="bi bi-envelope"></i>
                 <h4>E-mail:</h4>
@@ -482,41 +498,88 @@
 
           </div>
 
-          <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+          <!--new form-->
+          <!-- * * * * * * * * * * * * * * *-->
+            <!-- * * SB Forms Contact Form * *-->
+            <!-- * * * * * * * * * * * * * * *-->
+            <!-- This form is pre-integrated with SB Forms.-->
+            <!-- To make this form functional, sign up at-->
+            <!-- https://startbootstrap.com/solution/contact-forms-->
+            <!-- to get an API token!-->
+            
+          <!--new form-->
+          <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">  
+            <form id="contactForm" data-sb-form-api-token="API_TOKEN" class="contctForm">   
+              <!--Form's input: Name--> 
               <div class="row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-6" >
                   <label for="name">Seu nome</label>
-                  <input type="text" name="name" class="form-control" id="name" required>
+                  <input type="text" name="name" class="form-control" id="name" required> <!--Como isso 'tá validando agora? antes usava um "data-sb-validations="required", "required,email" para email... Interessante.-->
                 </div>
+              <!--Form's input: email--> 
                 <div class="form-group col-md-6">
                   <label for="name">Seu e-mail</label>
                   <input type="email" class="form-control" name="email" id="email" required>
                 </div>
               </div>
+              <!--Form's input: Subject--> 
               <div class="form-group">
                 <label for="name">Assunto</label>
-                <input type="text" class="form-control" name="subject" id="subject" required>
+                <input type="text" class="form-control" name="subject" id="subject" required>  
+              </div>  
+              <!--Form's input: Message--> 
+              <div class="form-group"> <!--Antes a classe era "form-floating mb-3". Eu podia refazer com isso, talvez...-->
+                <label for="name">Menssagem</label> 
+                <textarea class="form-control" name="message" rows="10" required
+                type="text"
+                placeholder= "Digite sua mensagem aqui..."></textarea> <!--A tag precisa acabar na mesma linha, senão ela dá espaço. Jeez, até comment entra, se estiver na tag 'textarea'...-->
               </div>
-              <div class="form-group">
-                <label for="name">Menssagem</label>
-                <textarea class="form-control" name="message" rows="10" required></textarea>
-              </div>
+<!--            
               <div class="my-3">
-                <div class="loading">Loading</div>
+                <div class="loading">Carregando...</div>
                 <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
+                <div class="sent-message">Sua mensagem foi enviada.</div>
               </div>
+-->           
+              <!-- Submit success message-->
+              <!---->
+              <!-- This is what your users will see when the form-->
+              <!-- has successfully submitted-->
+              <div class="d-none" id="submitSuccessMessage">
+                <div class="text-center mb-3">
+                  <div class="fw-bolder">Sua mensagem foi enviada.</div>
+                  To activate this form, sign up at
+                  <br />
+                  <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                </div>
+              </div>
+              
+              <!-- Submit error message-->
+              <!---->
+              <!-- This is what your users will see when there is-->
+              <!-- an error submitting the form-->
+              <div class="d-none" id="submitErrorMessage">
+                <div class="text-center text-danger mb-3">Houve um erro ao enviar sua mensagem.</div>
+              </div>
+
+              <!-- Submit Button test #1: Como eu alinho? -->
+<!--
+              <button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Send</button>
+-->
+              <!-- Submit Button test #2: Será que vai funcionar?-->
               <div class="text-center"><button type="submit">Enviar</button></div>
+
             </form>
           </div>
 
-        </div>
+        </div>  <!--Mesmo container de rows, mesma row. Como eu posso fazer o texto não stretch o background do lado...?-->
 
       </div>
     </section><!-- End Contact Section -->
 
   </main><!-- End #main -->
+
+  
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
